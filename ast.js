@@ -26,6 +26,14 @@ function number(char) {
       type: typeAll.punctuate,
       value: char,
     });
+
+    // 重置收集状态
+    curToken = {
+      type: typeAll.numberic,
+      value: "",
+    };
+
+    return number;
   }
   return;
 }

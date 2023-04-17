@@ -1,5 +1,5 @@
 let tokens = [];
-const numReg = /\d/;
+const numReg = /[0-9]/;
 const typeAll = {
   numberic: "numberic",
   punctuate: "punctuate",
@@ -34,8 +34,9 @@ function number(char) {
     };
 
     return number;
+  } else {
+    console.log(char, "---");
   }
-  return;
 }
 
 /** 开始状态 */
@@ -53,7 +54,11 @@ function tokenizer(inputStr) {
   let state = start;
 
   for (let char of inputStr) {
-    state = state(inputStr);
+    state = state(char);
+  }
+
+  if (curToken.value.length) {
+    emit(curToken);
   }
 }
 
